@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+
+  server:
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
